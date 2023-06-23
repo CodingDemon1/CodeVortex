@@ -7,15 +7,8 @@ const { HistoryRoute } = require("./Routes/History.Routes");
 const { connection } = require("./config/db");
 
 const app = express();
+app.use(cors())
 app.use(express.json());
-app.use("/user", UserRoute);
-
-//OpenAI Config
-const configuration = new Configuration({
-	apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
 
 //Routes
 app.get("/", (req, res) => {
