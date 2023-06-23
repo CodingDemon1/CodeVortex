@@ -27,6 +27,7 @@ const SpeechToText = () => {
 
   function handleReset() {
     resetTranscript();
+    console.log(intervieweeAnswer, "ANSWER");
   }
 
   return (
