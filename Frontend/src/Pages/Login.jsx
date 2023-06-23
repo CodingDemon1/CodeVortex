@@ -24,7 +24,7 @@ const Login = () => {
   return (
     <div id="container">
       <div id="login-card">
-        <h2>Please Login</h2>
+        {/* <h2>Please Login</h2> */}
         {/* <img src="" alt="" srcset="" /> */}
         <div>
           <form onSubmit={handleLogin}>
