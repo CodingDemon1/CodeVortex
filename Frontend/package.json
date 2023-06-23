@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "react-speech-recognition": "^3.10.0",
     "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
     "thunk": "^0.0.1",
     "web-vitals": "^2.1.4"
   },
