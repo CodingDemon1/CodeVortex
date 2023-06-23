@@ -1,10 +1,14 @@
 import "./App.css";
-import SpeechToText from "./component/SpeechToText";
+import AllRoutes from "./component/AllRoutes";
+import Navbar from "./component/Navbar";
+// import SpeechToText from "./component/SpeechToText";
 
 function App() {
   return (
     <div className="App">
-      <SpeechToText />
+      <Navbar />
+      <AllRoutes />
+      {/* <SpeechToText /> */}
     </div>
   );
 }
