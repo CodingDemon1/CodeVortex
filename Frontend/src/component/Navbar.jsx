@@ -19,15 +19,17 @@ const Navbar = () => {
           <div className="flex space-x-20">
             <Link
               to="/home"
-              className="text-white hover:text-gray-300 font-semibold"
+              className="text-white hover:text-gray-300 font-semibold transition duration-300 ease-in-out home-link"
             >
-              Home
+              <span className="inline-block">Home</span>
+              <span className="inline-block animate-bounce text-2xl">&#x1F3E0;</span>
             </Link>
             <Link
               to="/feedback"
-              className="text-white hover:text-gray-300 font-semibold"
+              className="text-white hover:text-gray-300 font-semibold transition duration-300 ease-in-out"
             >
-              Feedback
+              <span className="inline-block">Feedback</span>
+              <span className="inline-block animate-bounce text-2xl">&#x1F4AC;</span>
             </Link>
           </div>
         </div>
