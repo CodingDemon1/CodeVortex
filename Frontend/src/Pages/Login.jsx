@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const auth = useSelector((store) => store.reducer.auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (auth) {
+      location.state ? navigate(location.state) : navigate("/home");
+    }
+  }, [auth]);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const payload = { email, password };

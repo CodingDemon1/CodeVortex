@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
+import useVerify from "../Hooks/useVerify";
 
 function Home() {
   const topics = [
@@ -16,6 +17,9 @@ function Home() {
   const [role, setRole] = useState("");
   const [experience, setExperience] = useState("");
   const navigate = useNavigate();
+
+  const verified = useVerify();
+  console.log(verified, "verified");
 
   const handleRoleChange = (event) => {
     setRole(event.target.value);
