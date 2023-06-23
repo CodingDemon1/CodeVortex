@@ -5,10 +5,10 @@ const cors = require("cors");
 const { UserRoute } = require("./Routes/Users.Routes");
 const { connection } = require("./config/db");
 const fetch = require("node-fetch");
-const { JSON } = require("mysql/lib/protocol/constants/types");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use("/user", UserRoute);
 
 //OpenAI Config
