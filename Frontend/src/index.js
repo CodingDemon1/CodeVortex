@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <ChakraProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
