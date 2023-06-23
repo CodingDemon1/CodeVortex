@@ -9,7 +9,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "framer-motion": "^10.12.17",
+=======
+    "axios": "^1.4.0",
+    "framer-motion": "^10.12.16",
+>>>>>>> b27afb986d27d0b4e60b1d5a467648ce58f3a2ff
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
