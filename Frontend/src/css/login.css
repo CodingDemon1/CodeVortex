@@ -26,10 +26,10 @@
 }
 
 #login-card>div>form>input {
-    width: 90%;
+    width: 98%;
     padding: 10px;
     margin: 5px;
-    border-color: rgba(155, 155, 160, 0.085);
+    border: 2px solid rgba(155, 155, 160, 0.085);
     border-radius: 5px;
     
 }

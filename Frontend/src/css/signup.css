@@ -34,9 +34,13 @@
     width: 90%;
     padding: 10px;
     margin: 5px;
-    border-color: rgba(155, 155, 160, 0.085);
+    border: 2px solid rgba(155, 155, 160, 0.085);
     border-radius: 5px;
+
     
+}
+#signup-card>div>form>input::placeholder{
+    font-size: 15px;
 }
 
 #signup-card>div>form>input:focus{
