@@ -2,6 +2,7 @@ const { Blacklist } = require("../Models/blacklist.model");
 const { UserModel } = require("../Models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { verify } = require("../middleware/jwtAuth.middleware");
 const UserRoute = require("express").Router();
 require("dotenv").config();
 
@@ -64,6 +65,19 @@ UserRoute.get("/logout", async (req, res) => {
     await blackAccess.save();
 
     res.send({ msg: "logout successfull....." });
+  } catch (error) {
+    res.send({ msg: error.msg });
+  }
+});
+
+// FOR FRONTEND
+/* This code defines a GET route for "/verify" on the UserRoute router. It uses the `verify` middleware
+function to authenticate the user's access token. If the token is valid, it sends a response with a
+success message. If the token is invalid or missing, it will throw an error and send a response with
+an error message. */
+UserRoute.get("/verify", verify, async (req, res) => {
+  try {
+    res.send({ msg: "Success" });
   } catch (error) {
     res.send({ msg: error.msg });
   }
