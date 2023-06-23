@@ -79,7 +79,7 @@ const obj = [
   ];
   
   console.log(obj);
-  let objStr = JSON.stringify(obj);
+//   let objStr = JSON.stringify(obj);
 
 app.post("/rating", async (req, res) => {
 	// const { qn1 , qn2 , ans1, ans2 } = req.body;
@@ -89,7 +89,7 @@ app.post("/rating", async (req, res) => {
 	// Set the prompt based on the received job role and experience
 	const prompt = `read the following array of objects and rate the answer out of 10 according to their questions. 
 	
-	${objStr}
+	${obj.toString()} 
 	
 	Provide an object in that object there will be only two data, first one will be the overall score in number and the second one will be the justification`;
 
@@ -97,8 +97,8 @@ app.post("/rating", async (req, res) => {
 		const response = await openai.createCompletion({
 			model: "text-davinci-003",
 			prompt,
-			// max_tokens: 300,
-			// temperature: 0.7, // Adjust the value to control the randomness of the generated text
+			max_tokens: 500,
+			temperature: 1, // Adjust the value to control the randomness of the generated text
 			//   stop: "\n",
 		});
 
