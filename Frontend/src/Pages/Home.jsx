@@ -89,18 +89,25 @@ function Home() {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-md font-bold mb-2"
-              htmlFor="inputField"
+              htmlFor="selectExperience"
             >
               Experience:-
             </label>
-            <input
+            <select
               className="block w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              id="inputField"
-              type="number"
-              placeholder="Enter your Experience in Years"
+              id="selectExperience"
               value={experience}
               onChange={handleExperienceChange}
-            />
+            >
+              <option value="">---Select Option---</option>
+              <option value={0}>Fresher</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>More</option>
+            </select>
           </div>
           <div className="flex items-center justify-center">
             <button
