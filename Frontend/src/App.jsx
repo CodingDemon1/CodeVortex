@@ -1,20 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './Pages/Login';
-import Signup from './Pages/Signup';
-import ForgotPassword from './Pages/ForgotPassword';
-
+import "./App.css";
+import ForgotPassword from "./Pages/ForgotPassword";
+import SpeechToText from "./component/SpeechToText";
+import Login from "./Pages/Login"
+import Signup from "./Pages/Signup"
 function App() {
-
-
   return (
-    <>
-{/* <Signup/>     */}
-      {/* <Login />/ */}
-      
+    <div className="App">
+     {/* <ForgotPassword/>
+      */}
+      {/* <Signup/> */}
+      {/* <Login /> */}
       <ForgotPassword/>
-    </>
-    );
+    </div>
+  );
 }
 
 export default App;

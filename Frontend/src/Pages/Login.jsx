@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../css/login.css";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("")
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const payload = {email,password}
+        axios.post(`http://localhost:5000/user/login`, payload)
+            .then((res) => {
+                console.log(res.data)
+                alert(res.data.msg)
+                // navigate("/login")
+            })
+            .catch((err) => {
+                console.log(err.message)
+                alert(err.message)
+            })
+    }
+
     return (
         <div id='container'>
 
@@ -8,26 +27,26 @@ const Login = () => {
                 <h2 >Please Login</h2>
                 {/* <img src="" alt="" srcset="" /> */}
                 <div>
-                    <form >
+                    <form onSubmit={handleLogin}>
                         <label >Username</label>
                         <br />
-                        <input type="email" name="email" />
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" />
                         <br />
                         <label>Password</label>
                         <br />
-                        <input type="password" name="" id="" />
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" />
                         <br />
                         <button type="submit">Login</button>
                     </form>
-                    <a href="http://">
+                    <Link to="/forgot-password">
                         <h5>Forgot password?</h5>
 
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div>
-                <p> Don't have account?  <a href="">
-                    SignUp</a></p>
+                <p> Don't have account?  <Link to={"/sign-up"}>
+                    SignUp</Link></p>
             </div>
         </div>
     )
