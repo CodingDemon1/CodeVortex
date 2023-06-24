@@ -1,11 +1,8 @@
 import React from "react";
 
-const Question = () => {
-  return (
-    <li className=" text-xl font-medium	">
-      Here is the sample question that will be asked?
-    </li>
-  );
+const Question = ({ question }) => {
+  console.log(question);
+  return <div className=" text-xl font-medium	">{question}</div>;
 };
 
 export default Question;

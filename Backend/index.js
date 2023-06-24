@@ -33,7 +33,7 @@ app.post("/query", async (req, res) => {
   const { role, experience } = req.body;
 
   // Set the prompt based on the received job role and experience
-  const prompt = `Act as an Interviewer, For Job role ${role} and Experience ${experience}, ask only two interview questions`;
+  const prompt = `Act as an Interviewer, For Job role ${role} developer and Experience ${experience}, ask only two interview questions`;
 
   try {
     const response = await openai.createCompletion({
@@ -66,12 +66,12 @@ app.post("/query", async (req, res) => {
 
 app.post("/rating", async (req, res) => {
   // Extract Question 1 and Answer 1 from req.body
-  const question1 = req.body.question1;
-  const answer1 = req.body.answer1;
+  const question1 = req.body.question1.question;
+  const answer1 = req.body.question1.answer;
 
   // Extract Question 2 and Answer 2 from req.body
-  const question2 = req.body.question2;
-  const answer2 = req.body.answer2;
+  const question2 = req.body.question2.question;
+  const answer2 = req.body.question2.answer;
 
   // Set the prompt based on the received job role and experience, including the extracted values
   const prompt = `Rate Each Answers out of 10 given to these below questions and justification(1 line) why you rated this particular number.

@@ -7,6 +7,7 @@ import InterviewPage from "../Pages/InterviewPage";
 import ForgotPassword from "../Pages/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import Score from "../Pages/Score";
+import TempPage from "../Pages/TempPage";
 
 function AllRoutes() {
   return (
@@ -34,6 +35,14 @@ function AllRoutes() {
         element={
           <PrivateRoute>
             <Score />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/temp"
+        element={
+          <PrivateRoute>
+            <TempPage />
           </PrivateRoute>
         }
       />

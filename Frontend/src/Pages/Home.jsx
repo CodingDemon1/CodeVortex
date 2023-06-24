@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import useVerify from "../Hooks/useVerify";
+import axios from "axios";
+import { Spinner } from "@chakra-ui/spinner";
+import { useDispatch } from "react-redux";
+import { QUESTIONS_UPDATE } from "../Redux/actionTypes";
 
 function Home() {
+  const url =
+    process.env.NODE_ENV == "development"
+      ? process.env.REACT_APP_LOCAL_URL
+      : process.env.REACT_APP_PROD_URL;
+
   const topics = [
     "React JS",
     "Node JS",
@@ -14,9 +23,11 @@ function Home() {
     "Python",
   ];
   const toast = useToast();
+  const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("");
   const [experience, setExperience] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const verified = useVerify();
   console.log(verified, "verified");
@@ -30,6 +41,7 @@ function Home() {
   };
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     if (role && experience) {
       let obj = {
@@ -37,7 +49,26 @@ function Home() {
         experience,
       };
       console.log(obj);
-      navigate("/interview");
+      axios
+        .post(`${url}/query`)
+        .then((res) => {
+          console.log(res);
+          if (res.data.success == true) {
+            const questions = {};
+            res.data.data.forEach((question, i) => {
+              // questions.push({ question, answer: "" });
+              questions[`question${i + 1}`] = { question, answer: "" };
+            });
+            dispatch({ type: QUESTIONS_UPDATE, payload: questions });
+            navigate("/interview");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     } else {
       toast({
         title: "Please Fill the necessary details required.",
@@ -111,10 +142,20 @@ function Home() {
           </div>
           <div className="flex items-center justify-center">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+              className="bg-blue-500 flex justify-center items-center min-w-[145px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
               type="submit"
             >
-              Start Interview
+              {loading ? (
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="md"
+                />
+              ) : (
+                "Start Interview"
+              )}
             </button>
           </div>
         </form>
