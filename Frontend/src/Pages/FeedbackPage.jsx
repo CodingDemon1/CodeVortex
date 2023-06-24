@@ -1,8 +1,10 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { INTERVIEW_FEEDBACK } from "../Redux/actionTypes";
+import { useToast } from "@chakra-ui/react";
+import PerfomanceFeedback from "./PerfomanceFeedback";
 
 const FeedbackPage = () => {
   const url =
@@ -14,6 +16,7 @@ const FeedbackPage = () => {
   // const feedback = useSelector((store) => store.reducer.feedback);
   const dispatch = useDispatch();
   // console.log(feedback, "FEEDBACK");
+  const toast = useToast();
 
   if (Object.keys(questions).length == 0) {
     return <Navigate to={"/home"} />;
@@ -26,7 +29,8 @@ const FeedbackPage = () => {
       .post(`${url}/question/rating`, questions, {
         headers: {
           "Content-Type": "application/json",
-          //   Auth: localStorage.getItem("token"),
+          // Auth: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("token")
         },
       })
       .then((res) => {
@@ -34,14 +38,30 @@ const FeedbackPage = () => {
         if (res.data.success == true) {
           dispatch({ type: INTERVIEW_FEEDBACK, payload: res.data.data });
         }
+        toast({
+          title: `${res.data.msg ? res.data.msg : "Generating feedback"}`,
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
+
       })
       .catch((err) => {
-        console.log(err);
-        alert("Something went wrong");
+        console.log(err.message);
+        toast({
+          title: `${err.message ? err.message : "Something went wrong!"}`,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
       });
   }
 
-  return <div>FeedbackPage</div>;
+  return <div>
+    <PerfomanceFeedback />
+  </div>;
 };
 
 export default FeedbackPage;

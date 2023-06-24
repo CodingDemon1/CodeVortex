@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../css/login.css";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { USER_AUTH } from "../Redux/actionTypes";
+import { Center, Divider, Heading, Spinner, VStack, useToast } from "@chakra-ui/react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,6 +12,8 @@ const Login = () => {
   const auth = useSelector((store) => store.reducer.auth);
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const toast = useToast();
 
   useEffect(() => {
     if (auth) {
@@ -24,17 +28,32 @@ const Login = () => {
       .post(`http://localhost:5000/user/login`, payload)
       .then((res) => {
         console.log(res.data);
-        alert(res.data.msg);
-        // navigate("/login")
+        toast({
+          title: `${res.data.user.name ? `${res.data.user.name} succesfully logged in` : res.data.msg}`,
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
+        localStorage.setItem("token", res.data.Accesstoken)
+        dispatch({ type: USER_AUTH, auth: true, payload: res.data.user })
+        navigate("/home")
       })
       .catch((err) => {
         console.log(err.message);
-        alert(err.message);
+        toast({
+          title: `${err.message ? err.message : "Something went wrong!"}`,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
       });
   };
 
   return (
     <div id="container">
+      
       <div id="login-card">
         {/* <h2>Please Login</h2> */}
         {/* <img src="" alt="" srcset="" /> */}
