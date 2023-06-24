@@ -4,7 +4,14 @@ import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_AUTH } from "../Redux/actionTypes";
-import { Center, Divider, Heading, Spinner, VStack, useToast } from "@chakra-ui/react";
+import {
+  Center,
+  Divider,
+  Heading,
+  Spinner,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,16 +35,26 @@ const Login = () => {
       .post(`http://localhost:5000/user/login`, payload)
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("id", res.data.user._id);
         toast({
-          title: `${res.data.user.name ? `${res.data.user.name} succesfully logged in` : res.data.msg}`,
+          title: `${
+            res.data.user.name
+              ? `${res.data.user.name} succesfully logged in`
+              : res.data.msg
+          }`,
           status: "success",
           duration: 9000,
           isClosable: true,
           position: "top",
         });
-        localStorage.setItem("token", res.data.Accesstoken)
-        dispatch({ type: USER_AUTH, auth: true, payload: res.data.user })
-        navigate("/home")
+        localStorage.setItem("token", res.data.Accesstoken);
+        dispatch({
+          type: USER_AUTH,
+          auth: true,
+          payload: res.data.user,
+          token: res.data.Accesstoken,
+        });
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.message);
@@ -53,7 +70,6 @@ const Login = () => {
 
   return (
     <div id="container">
-      
       <div id="login-card">
         {/* <h2>Please Login</h2> */}
         {/* <img src="" alt="" srcset="" /> */}
@@ -77,7 +93,12 @@ const Login = () => {
               name="password"
             />
             <br />
-            <button type="submit">Login</button>
+            <button
+              className="bg-gradient-to-r from-violet-500 to-fuchsia-500"
+              type="submit"
+            >
+              Login
+            </button>
           </form>
           <Link to="/resetPass">
             <h5>Forgot password?</h5>

@@ -11,12 +11,18 @@ const initialState = {
   token: "",
   question: {},
   feedback: "",
+  user: { name: "", _id: localStorage.getItem("id") || "", email: "" },
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_AUTH:
-      return { ...state, auth: action.auth, token: action.payload };
+      return {
+        ...state,
+        auth: action.auth,
+        user: action.payload,
+        token: action.token,
+      };
 
     case QUESTIONS_UPDATE:
       return { ...state, question: action.payload };

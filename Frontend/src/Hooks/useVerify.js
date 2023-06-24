@@ -3,6 +3,8 @@ import axios from "axios";
 
 const useVerify = () => {
   const [verified, setverified] = useState(true);
+  const [user, setUser] = useState("");
+  const [token, setToken] = useState("");
 
   const url =
     process.env.NODE_ENV == "development"
@@ -23,9 +25,11 @@ const useVerify = () => {
         },
       })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.data.msg == "Success") {
           setverified(true);
+          setUser(res.data.user);
+          setToken(res.data.token);
         } else {
           setverified(false);
         }
@@ -36,7 +40,7 @@ const useVerify = () => {
       });
   }
 
-  return verified;
+  return { verified, user, token };
 };
 
 export default useVerify;
