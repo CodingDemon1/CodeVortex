@@ -11,7 +11,7 @@ function App() {
   const verified = useVerify();
 
   const dispatch = useDispatch();
-  const store = useSelector((store) => store.reducer);
+  // const store = useSelector((store) => store.reducer);
 
   useEffect(() => {
     dispatch({ type: USER_AUTH, auth: verified });
