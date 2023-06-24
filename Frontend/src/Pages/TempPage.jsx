@@ -20,7 +20,7 @@ const TempPage = () => {
 
   function sendInterviewQuestionsAndAnswers() {
     axios
-      .post(`${url}/rating`, questions, {
+      .post(`${url}/question/rating`, questions, {
         headers: {
           "Content-Type": "application/json",
           //   Auth: localStorage.getItem("token"),

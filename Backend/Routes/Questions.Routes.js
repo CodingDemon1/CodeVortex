@@ -16,7 +16,7 @@ QuestionRoute.post("/query", async (req, res) => {
   const { role, experience } = req.body;
 
   // Set the prompt based on the received job role and experience
-  const prompt = `Act as an Interviewer, For Job role ${role} developer and Experience ${experience}, ask only two interview questions`;
+  const prompt = `Act as an Interviewer, For Job role ${role} developer and who's experience is ${experience} years, ask only two technical interview questions`;
 
   try {
     const response = await openai.createCompletion({
@@ -80,7 +80,7 @@ QuestionRoute.post("/rating", async (req, res) => {
       model: "text-davinci-003",
       prompt,
       max_tokens: 1000,
-      temperature: 0.7, // Adjust the value to control the randomness of the generated text
+      temperature: 1, // Adjust the value to control the randomness of the generated text
       // stop: "\n",
     });
 
