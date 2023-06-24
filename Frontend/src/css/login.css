@@ -11,6 +11,7 @@
     width: 400px;
     text-align: center;
     border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 #login-card>div {
@@ -18,7 +19,7 @@
     width: 300px;
     padding: 10px;
     text-align: left;
-    margin-bottom: 30px;
+    margin: 30px;
 }
 
 #login-card>div>form {
