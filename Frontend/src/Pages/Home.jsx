@@ -50,7 +50,7 @@ function Home() {
       };
       console.log(obj);
       axios
-        .post(`${url}/query`)
+        .post(`${url}/question/query`)
         .then((res) => {
           console.log(res);
           if (res.data.success == true) {
