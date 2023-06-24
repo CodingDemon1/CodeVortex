@@ -1,10 +1,15 @@
-import { QUESTIONS_UPDATE, UPDATE_ANSWER, USER_AUTH } from "./actionTypes";
+import {
+  INTERVIEW_FEEDBACK,
+  QUESTIONS_UPDATE,
+  UPDATE_ANSWER,
+  USER_AUTH,
+} from "./actionTypes";
 
 const initialState = {
   auth: false,
   token: "",
   question: {},
-  questionNumber: 1,
+  feedback: "",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +19,9 @@ export const reducer = (state = initialState, action) => {
 
     case QUESTIONS_UPDATE:
       return { ...state, question: action.payload };
+
+    case INTERVIEW_FEEDBACK:
+      return { ...state, feedback: action.payload };
 
     case UPDATE_ANSWER:
       console.log("INREDUX", action.payload);
