@@ -4,9 +4,8 @@ Code Vortex is an innovative self-interview prep platform harnessing the power o
 
 
 ## Deployed Links
-
-[https://frontend-url/](https://frontend-url/)  **(Netlify)** \
-[https://backend-url/](https://backend-url/) **(Railway)** 
+https://code-vertex.netlify.app  **(Netlify)** \
+https://tiny-pear-jaguar-veil.cyclic.app **(Cyclic)** 
 
 
 ## Features
@@ -26,7 +25,16 @@ Code Vortex is an innovative self-interview prep platform harnessing the power o
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![CodeVertexSignup](https://github.com/CodingDemon1/CodeVortex/assets/68629598/e0217d76-477e-4213-aa9a-292548fbb996)
+![CodeVertexLogin](https://github.com/CodingDemon1/CodeVortex/assets/68629598/2f569e53-698a-4007-a7d7-26129880cacc)
+![CodeVertexForgotPass](https://github.com/CodingDemon1/CodeVortex/assets/68629598/28e9e2c1-f8f6-4fa9-89fb-5b4758a14717)
+![CodeVortexHome](https://github.com/CodingDemon1/CodeVortex/assets/68629598/654458dc-2521-42f1-8386-28418a55536a)
+![CodeVortexInterview](https://github.com/CodingDemon1/CodeVortex/assets/68629598/789e8dfb-9192-4192-8493-5cd1420f7523)
+![CodeVortexFeedbackGenerationPage](https://github.com/CodingDemon1/CodeVortex/assets/68629598/d107e72a-6025-45d3-963f-48a4194bc8c2)
+![CodeVortexFeedbackpage](https://github.com/CodingDemon1/CodeVortex/assets/68629598/cefe03a9-adb9-41ba-aede-0278479f96a3)
+![CodeVortexScoresPage](https://github.com/CodingDemon1/CodeVortex/assets/68629598/e5be4b54-243d-470b-8cc1-c3875cc93ac3)
+
+
 
 
 ## Authors
@@ -98,3 +106,5 @@ Code Vortex is an innovative self-interview prep platform harnessing the power o
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of user to fetch |
+
+
