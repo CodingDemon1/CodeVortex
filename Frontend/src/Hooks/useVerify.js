@@ -19,7 +19,7 @@ const useVerify = () => {
       .get(`${url}/user/verify`, {
         headers: {
           "Content-Type": "application/json",
-          Auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDk1YzEyM2JlODJhMTAzMDczZjMwMDkiLCJpYXQiOjE2ODc1MzU5MTd9.xpJ9K_SwYMRtNsiFIOlceYMkyDnywmIwRwVnjbq6U0U",
+          Auth: localStorage.getItem("token"),
         },
       })
       .then((res) => {

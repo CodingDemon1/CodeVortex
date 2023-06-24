@@ -3,6 +3,7 @@ import {
   QUESTIONS_UPDATE,
   UPDATE_ANSWER,
   USER_AUTH,
+  USER_LOGOUT,
 } from "./actionTypes";
 
 const initialState = {
@@ -29,6 +30,8 @@ export const reducer = (state = initialState, action) => {
         ...state,
         question: action.payload,
       };
+    case USER_LOGOUT:
+      return initialState;
 
     default: {
       return state;

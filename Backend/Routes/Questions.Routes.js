@@ -56,24 +56,50 @@ QuestionRoute.post("/rating", async (req, res) => {
   //     "answer1":"Put your answer 1 here",
   //     "answer2":"Put your answer 2 here"
   // }
-
+  const obj = [
+    {
+      question:  req.body.question1.question,
+      answer:req.body.question1.answer,
+    },
+    {
+      question:  req.body.question2.question,
+      answer: req.body.question2.answer,
+    },
+  ];
+  
+  let objStr = JSON.stringify(obj);
   // Extract Question 1 and Answer 1 from req.body
-  const question1 = req.body.question1.question;
-  const answer1 = req.body.question1.answer;
+  // const question1 = req.body.question1.question;
+  // const answer1 = req.body.question1.answer;
 
-  // Extract Question 2 and Answer 2 from req.body
-  const question2 = req.body.question2.question;
-  const answer2 = req.body.question2.answer;
+  // // Extract Question 2 and Answer 2 from req.body
+  // const question2 = req.body.question2.question;
+  // const answer2 = req.body.question2.answer;
 
   // Set the prompt based on the received job role and experience, including the extracted values
-  const prompt = `Rate Each Answers out of 10 given to these below questions and justification(1 line) why you rated this particular number.
+  // const prompt = `Rate Each Answers out of 10 given to these below questions and justification(1 line) why you rated this particular number.
 
-	Question 1: ${question1}
-	Answer 1: ${answer1}
+  // Question 1: ${question1}
+  // Answer 1: ${answer1}
+
+  // Question 2: ${question2}
+  // Answer 2: ${answer2}`;
+  // // console.log(prompt);
+  const prompt = `read the following array of objects and rate the answer out of 10 according to their questions. 
 	
-	Question 2: ${question2}
-	Answer 2: ${answer2}`;
-  // console.log(prompt);
+	${objStr} 
+	
+    Level of the question is  hard so the response should be also based on that level
+
+	Provide the response on this format : [
+        score: {the score},
+        feedback : {the feedback},
+        extra : {extra information},
+        error : {error if any}
+    ]
+
+    `;
+
 
   try {
     const response = await openai.createCompletion({

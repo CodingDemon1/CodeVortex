@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../css/signup.css"
 import logo from "../images/code-vortex-logo.png";
-import { Text } from "@chakra-ui/react";
+import { Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 // import {useNavigate} fro/m
@@ -12,6 +12,7 @@ const Signup = () => {
     const [name, setname] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
     const navigate = useNavigate()
+    const toast = useToast()
     const handleRegister = (e) => {
         e.preventDefault();
         if (password === confirmPass) {
@@ -22,17 +23,45 @@ const Signup = () => {
             }
             axios.post(`http://localhost:5000/user/register`, payload)
                 .then((res) => {
-                    console.log(res.data)
-                    alert(res.data.msg)
-                    // navigate("/login")
+                    if (res.data.msg === "user has been registered successfully") {
+                    toast({
+                        title: res.data.msg,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                        position: "top",
+                      });
+                        
+                        navigate("/")
+                    } else {
+                        toast({
+                            title: res.data.msg,
+                            status: "warning",
+                            duration: 9000,
+                            isClosable: true,
+                            position: "top",
+                          });
+                    }
                 })
                 .catch((err) => {
                     console.log(err.message)
-                    alert(err.message)
+                    toast({
+                        title: `${err.message ? err.message : "Something went wrong!"}`,
+                        status: "error",
+                        duration: 9000,
+                        isClosable: true,
+                        position: "top",
+                      });
                 })
 
         } else {
-            alert("Oops! password is not matching ")
+            toast({
+                title: "Oops! password is not matching ",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+                position: "top",
+              });
         }
     }
 
