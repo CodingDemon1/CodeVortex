@@ -17,7 +17,7 @@ QuestionRoute.post("/query", async (req, res) => {
 
   // Set the prompt based on the received job role and experience
   const prompt = `Act as an Interviewer, For Job role ${role} developer and who's experience is ${experience} years, ask only two technical interview questions`;
-
+  //
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
