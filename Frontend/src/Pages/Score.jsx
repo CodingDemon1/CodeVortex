@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FeedbackCard from '../component/FeedbackCard';
-import './score.css'; 
+import './scores.css'; 
 
 const Score = () => {
   const feedbacks = [
