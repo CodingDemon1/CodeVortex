@@ -30,7 +30,7 @@ const SpeechToText = ({ questions, questionNumber }) => {
   const navigate = useNavigate();
   console.log(showTimer1);
   console.log(showTimer2, startBtn);
-  console.log(questionNumber, questions);
+  console.log(questions);
   // console.log(Object.keys(studentQuestionAnswer).length, "LENGTh");
   //
 
@@ -76,7 +76,7 @@ const SpeechToText = ({ questions, questionNumber }) => {
               return 30;
             } else {
               dispatch({ type: UPDATE_ANSWER, payload: studentQuestionAnswer });
-              navigate("/temp");
+              navigate("/feedback");
             }
             return 0;
           } //
@@ -127,6 +127,8 @@ const SpeechToText = ({ questions, questionNumber }) => {
   function updateAnserFromStudent() {
     studentQuestionAnswer[`question${questionNumberTracker}`].answer =
       answerContainer.textContent;
+    answerContainer.textContent = "";
+    resetTranscript();
   }
 
   return (
