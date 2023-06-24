@@ -16,7 +16,7 @@ QuestionRoute.post("/query", async (req, res) => {
     const { role, experience } = req.body;
 
     // Set the prompt based on the received job role and experience
-    const prompt = `Act as an Interviewer, For Job role ${role} and Experience ${experience}, ask only two interview questions`;
+    const prompt = `Act as an Interviewer, For Job role ${role} developer and Experience ${experience}, ask only two interview questions`;
 
     try {
         const response = await openai.createCompletion({
