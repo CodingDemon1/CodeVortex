@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import FeedbackCard from '../component/FeedbackCard';
 import './scores.css'; 
@@ -41,6 +42,5 @@ const Score = () => {
       </div>
     </div>
   );
-};
-
+ }
 export default Score;
