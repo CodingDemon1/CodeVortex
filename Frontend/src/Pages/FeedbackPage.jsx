@@ -26,13 +26,17 @@ const FeedbackPage = () => {
 
   function sendInterviewQuestionsAndAnswers() {
     axios
-      .post(`${url}/question/rating`, questions, {
-        headers: {
-          "Content-Type": "application/json",
-          // Auth: localStorage.getItem("token"),
-          Authorization: localStorage.getItem("token")
-        },
-      })
+      .post(
+        `${url}/question/rating`,
+        { ...questions, id: localStorage.getItem("id") },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // Auth: localStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         if (res.data.success == true) {
@@ -45,7 +49,6 @@ const FeedbackPage = () => {
           isClosable: true,
           position: "top",
         });
-
       })
       .catch((err) => {
         console.log(err.message);
@@ -59,9 +62,11 @@ const FeedbackPage = () => {
       });
   }
 
-  return <div>
-    <PerfomanceFeedback />
-  </div>;
+  return (
+    <div>
+      <PerfomanceFeedback />
+    </div>
+  );
 };
 
 export default FeedbackPage;

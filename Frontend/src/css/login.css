@@ -32,9 +32,10 @@
     margin: 5px;
     border: 2px solid rgba(155, 155, 160, 0.085);
     border-radius: 5px;
-    
+
 }
-#login-card>div>form>input:focus{
+
+#login-card>div>form>input:focus {
     border: none;
     background: #000000ad;
     color: white;
@@ -47,19 +48,22 @@
     border: none;
     margin-top: 20px;
     text-transform: uppercase;
-    background: #000;
+    /* background: #000; */
     color: white;
-
+    /* background-color: linear-gradient(red, blue); */
 }
-#login-card>div>form>button:hover{
+
+#login-card>div>form>button:hover {
     background-color: #000000bc;
-    }
-form~a{
+}
+
+form~a {
     text-align: end;
     color: rgba(0, 0, 0, 0.384);
     text-decoration: none;
 }
-#login-card+div{
+
+#login-card+div {
     text-align: right;
     width: 90%;
 }

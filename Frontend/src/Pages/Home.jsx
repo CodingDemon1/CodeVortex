@@ -109,7 +109,7 @@ function Home() {
               value={role}
               onChange={handleRoleChange}
             >
-              <option value="">Select the iterview topic</option>
+              <option value="">Select the interview topic</option>
               {topics.map((topic) => (
                 <option key={topic + Date.now()} value={topic}>
                   {topic}

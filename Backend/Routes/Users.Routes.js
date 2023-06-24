@@ -76,8 +76,12 @@ function to authenticate the user's access token. If the token is valid, it send
 success message. If the token is invalid or missing, it will throw an error and send a response with
 an error message. */
 UserRoute.get("/verify", verify, async (req, res) => {
+  const { userId } = req.body;
+  const token = req.header("Auth");
   try {
-    res.send({ msg: "Success" });
+    const user = await UserModel.findOne({ _id: userId });
+    // console.log(userId, "USER");
+    res.send({ msg: "Success", user, token });
   } catch (error) {
     res.send({ msg: error.msg });
   }

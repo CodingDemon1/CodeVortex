@@ -8,13 +8,14 @@ import { USER_AUTH } from "./Redux/actionTypes";
 // import SpeechToText from "./component/SpeechToText";
 
 function App() {
-  const verified = useVerify();
+  const { verified, user, token } = useVerify();
+  // console.log(verified, user, token);
 
   const dispatch = useDispatch();
   // const store = useSelector((store) => store.reducer);
 
   useEffect(() => {
-    dispatch({ type: USER_AUTH, auth: verified });
+    dispatch({ type: USER_AUTH, auth: verified, payload: user, token: token });
   }, [verified]);
 
   return (

@@ -7,8 +7,8 @@ const verify = async (req, res, next) => {
     const tkn = req.header("Auth");
     const decoded = jwt.verify(tkn, process.env.secretKey);
     if (decoded) {
-      req.body.userId = decoded.id;
-      // console.log(req.body.userId);
+      req.body.userId = decoded.userID;
+      // console.log(decoded);
       next();
     } else {
       res.status(400).send({ msg: "Something Went Wrong" });

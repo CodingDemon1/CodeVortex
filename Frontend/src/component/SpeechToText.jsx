@@ -14,7 +14,7 @@ const SpeechToText = ({ questions, questionNumber }) => {
   const [intervieweeAnswer, setIntervieweeAnswer] = useState("");
   const startBtn = document.querySelector(".startBtn");
   const answerContainer = document.querySelector(".answerContainer");
-  const [timer1, setTimer1] = useState(10);
+  const [timer1, setTimer1] = useState(5);
   const [answerTimer, setAnswerTimer] = useState(30);
   const showTimer1 = useRef(true);
   const showTimer2 = useRef(false);
@@ -43,11 +43,11 @@ const SpeechToText = ({ questions, questionNumber }) => {
         setTimer1((prev) => {
           if (prev <= 0) {
             startListening();
-            setTimer1(10);
+            setTimer1(5);
             showTimer1.current = false;
             showTimer2.current = true;
             clearInterval(alertTimerId);
-            return 10;
+            return 5;
           }
           return prev - 1;
         });
@@ -169,7 +169,7 @@ const SpeechToText = ({ questions, questionNumber }) => {
             Start
           </button>
           <button
-            className={`stopBtn bg-red-600 text-white p-1 pl-2 pr-2 rounded min-w-[100px] ${
+            className={`stopBtn bg-[#d747ef] text-white p-1 pl-2 pr-2 rounded min-w-[100px] ${
               !buttonDisabbled || disableStopBtn
                 ? " cursor-no-drop bg-opacity-80 text-opacity-70"
                 : ""
@@ -180,7 +180,7 @@ const SpeechToText = ({ questions, questionNumber }) => {
             Stop
           </button>
           <button
-            className={` bg-cyan-600 text-white p-1 pl-2 pr-2 rounded min-w-[100px] }`}
+            className={` bg-[#8c5bf5] text-white p-1 pl-2 pr-2 rounded min-w-[100px] }`}
             onClick={handleReset}
           >
             Reset

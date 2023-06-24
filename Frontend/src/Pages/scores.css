@@ -1,0 +1,49 @@
+.score-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  /* Change the background color to match your navbar color */
+  padding: 20px;
+}
+
+.feedback-list {
+  width: 50%;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header {
+  /* background-color: #007bff; /* Change the background color to match your navbar color */
+  color: black;
+
+  border-radius: 4px 4px 0 0;
+  padding: 8px;
+  /* margin-bottom: 8px; */
+}
+
+.score {
+  font-size: 18px;
+  font-weight: bold;
+  /* margin-bottom: 8px; */
+}
+
+.author {
+  color: #eee;
+  margin: 0;
+}
+
+.message {
+  color: #444;
+  margin: 0;
+}
