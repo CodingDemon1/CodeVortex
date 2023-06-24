@@ -16,6 +16,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const url =
+    process.env.NODE_ENV == "development"
+      ? process.env.REACT_APP_LOCAL_URL
+      : process.env.REACT_APP_PROD_URL;
+
   const auth = useSelector((store) => store.reducer.auth);
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,7 +37,7 @@ const Login = () => {
     e.preventDefault();
     const payload = { email, password };
     axios
-      .post(`http://localhost:5000/user/login`, payload)
+      .post(`${url}/user/login`, payload)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("id", res.data.user._id);
