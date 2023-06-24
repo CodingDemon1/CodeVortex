@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 // import {useNavigate} fro/m
 const baseUrl = "localhost:5000";
 const Signup = () => {
+  const url =
+    process.env.NODE_ENV == "development"
+      ? process.env.REACT_APP_LOCAL_URL
+      : process.env.REACT_APP_PROD_URL;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setname] = useState("");
@@ -22,7 +27,7 @@ const Signup = () => {
         name,
       };
       axios
-        .post(`http://localhost:5000/user/register`, payload)
+        .post(`${url}/user/register`, payload)
         .then((res) => {
           if (res.data.msg === "user has been registered successfully") {
             toast({
